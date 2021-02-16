@@ -10,10 +10,11 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aleshatech.sqlitekotlin.adapter.PersonAdapter
+import com.aleshatech.sqlitekotlin.data.DbHelper
 import com.aleshatech.sqlitekotlin.model.Name
 
 
-class MainActivity : AppCompatActivity() {
+class PersonActivity : AppCompatActivity() {
      private lateinit var dbHelper: DbHelper
      var  btnAddToDb : Button?=null
      var  btnShowData : Button?=null
@@ -25,9 +26,14 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_person)
 
-        val dbHelper = DbHelper(this,null)
+        initViews()
+    }
+
+    @SuppressLint("WrongConstant")
+    fun initViews(){
+        val dbHelper = DbHelper(this, null)
         btnAddToDb = findViewById(R.id.btnAddToDb)
         btnShowData = findViewById(R.id.btn_show_data)
         edtName = findViewById(R.id.edt_name)
@@ -46,11 +52,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnShowData?.setOnClickListener {
-           val personList = dbHelper.getAllName();
+            val personList = dbHelper.getAllName();
             if (personList.size > 0) {
                 val mAdapter = PersonAdapter(  personList)
                 rcvShowName.adapter = mAdapter
             }
         }
     }
+
+
 }

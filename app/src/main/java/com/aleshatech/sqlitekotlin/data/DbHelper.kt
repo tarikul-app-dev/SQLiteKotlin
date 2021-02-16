@@ -1,14 +1,13 @@
-package com.aleshatech.sqlitekotlin
+package com.aleshatech.sqlitekotlin.data
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.aleshatech.sqlitekotlin.model.Name
 
 class DbHelper (context: Context,
-                factory: SQLiteDatabase.CursorFactory?) : SQLiteOpenHelper(context,DATABASE_NAME,factory,DATABASE_VERSION){
+                factory: SQLiteDatabase.CursorFactory?) : SQLiteOpenHelper(context, DATABASE_NAME,factory, DATABASE_VERSION){
 
 
 
